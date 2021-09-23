@@ -5,10 +5,10 @@ import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import logo from "../../assets/logo.svg";
 import linkedin from "../../assets/linkedin.svg";
-import { useMediaQuery } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   footerContainer: {
@@ -105,7 +105,7 @@ export default function Footer({ value, setValue }) {
           alignItems={matchesXS ? "center" : undefined}
         >
           {tabs.map((tab) => (
-            <Grid item>
+            <Grid item key={tab.name}>
               <Button
                 className={classes.footerTab}
                 component={Link}

@@ -27,7 +27,7 @@ export default createTheme({
     h2: {
       fontFamily: "Josefin Sans",
       fontWeight: 600,
-      fontSize: "2rem",
+      fontSize: "1.5rem",
       color: jayPurple,
       lineHeight: 1.5,
     },
@@ -36,6 +36,7 @@ export default createTheme({
       fontWeight: 500,
       fontSize: "1.5rem",
       lineHeight: 1.5,
+      color: jayPurple,
     },
     h4: {
       fontFamily: "Josefin Sans",
@@ -70,7 +71,7 @@ export default createTheme({
     body1: {
       fontFamily: "Josefin Sans",
       fontWeight: 400,
-      fontSize: "1rem",
+      fontSize: "1.25rem",
     },
     learnButton: {
       fontFamily: "Josefin Sans",
