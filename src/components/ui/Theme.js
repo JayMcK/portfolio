@@ -26,8 +26,8 @@ export default createTheme({
     },
     h2: {
       fontFamily: "Josefin Sans",
-      fontWeight: 600,
-      fontSize: "1.5rem",
+      fontWeight: 800,
+      fontSize: "1.75rem",
       color: jayPurple,
       lineHeight: 1.5,
     },

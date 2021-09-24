@@ -6,6 +6,7 @@ import theme from "./ui/Theme";
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 import Home from "./Home";
+import About from "./About";
 
 import "../App.css";
 
@@ -25,7 +26,12 @@ function App() {
             )}
           />
           <Route path="/projects" component={() => <h1>Projects</h1>} />
-          <Route path="/about" component={() => <h1>About</h1>} />
+          <Route
+            path="/about"
+            render={(props) => (
+              <About {...props} value={value} setValue={setValue} />
+            )}
+          />
           <Route path="/contact" component={() => <h1>contact</h1>} />
           <Redirect from="/home" to="/" />
         </Switch>

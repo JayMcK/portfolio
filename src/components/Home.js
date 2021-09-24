@@ -1,9 +1,7 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import Hidden from "@material-ui/core/Hidden";
 import Grid from "@material-ui/core/Grid";
-import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
@@ -11,7 +9,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Dialog from "@material-ui/core/Dialog";
 
 import ProjectDialog from "./commonComponents/ProjectDialog";
-import ContactCard from './ui/ContactCard';
+import ContactCard from "./ui/ContactCard";
 
 import downArrow from "../assets/downArrow.svg";
 import rightArrow from "../assets/rightArrow.svg";
@@ -104,9 +102,7 @@ export default function Home({ value, setValue }) {
   const classes = useStyles();
   const theme = useTheme();
 
-  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
   const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
-  const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [project, setProject] = useState("");
@@ -526,7 +522,7 @@ export default function Home({ value, setValue }) {
             </Grid>
           </Grid>
         </Grid>
-              <ContactCard setValue={setValue} />
+        <ContactCard setValue={setValue} />
         <Dialog
           style={{ zIndex: 1302 }}
           open={dialogOpen}
