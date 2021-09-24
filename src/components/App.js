@@ -8,6 +8,7 @@ import Footer from "./ui/Footer";
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
+import Projects from "./Projects";
 
 import "../App.css";
 
@@ -26,7 +27,12 @@ function App() {
               <Home {...props} value={value} setValue={setValue} />
             )}
           />
-          <Route path="/projects" component={() => <h1>Projects</h1>} />
+          <Route
+            path="/projects"
+            render={(props) => (
+              <Projects {...props} value={value} setValue={setValue} />
+            )}
+          />
           <Route
             path="/about"
             render={(props) => (

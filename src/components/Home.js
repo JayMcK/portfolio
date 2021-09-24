@@ -15,7 +15,9 @@ import downArrow from "../assets/downArrow.svg";
 import rightArrow from "../assets/rightArrow.svg";
 import rightArrowWhite from "../assets/rightArrowWhite.svg";
 import flowLiving from "../assets/flowLiving.jpg";
+import flowLivingLarge from "../assets/flowLivingLarge.png";
 import foxTreeKids from "../assets/foxTreeKids.jpg";
+import foxTreeKidsLarge from "../assets/foxTreeKidsLarge.png";
 import graduate from "../assets/graduate.svg";
 import tech from "../assets/tech.svg";
 import graph from "../assets/graph.svg";
@@ -112,7 +114,8 @@ export default function Home({ value, setValue }) {
       title: "Flow Living",
       liveLink: "https://flowliving.vercel.app/",
       ghLink: "https://github.com/JayMcK/FlowLiving-NextJS",
-      image: flowLiving,
+      imageSmall: flowLiving,
+      imageLarge: flowLivingLarge,
       alt: "flow living website link",
       designLink:
         "https://www.keepandshare.com/doc23/114271/flow-living-compressed-pdf-4-5-meg?da=y",
@@ -127,7 +130,8 @@ export default function Home({ value, setValue }) {
       title: "Fox Tree Kids",
       liveLink: "https://fox-tree-kids-nextjs.vercel.app/",
       ghLink: "https://github.com/JayMcK/FoxTreeKids-NextJS",
-      image: foxTreeKids,
+      imageSmall: foxTreeKids,
+      imageLarge: foxTreeKidsLarge,
       alt: "fox tree kids website link",
       designLink: "https://pdfhost.io/v/5Y~Jb.Q5d_Flow_Livingcompressed",
       purpose:
@@ -256,7 +260,7 @@ export default function Home({ value, setValue }) {
                   </Grid>
                   <Grid item style={{ marginBottom: matchesSM ? "2em" : 0 }}>
                     <img
-                      src={project.image}
+                      src={project.imageSmall}
                       alt={project.alt}
                       className={classes.projectImage}
                     />

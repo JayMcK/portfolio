@@ -161,7 +161,11 @@ export default function ProjectDialog({ info, setDialogOpen }) {
           rel="noopener noreferrer"
           align="center"
         >
-          <img src={info.image} alt={info.alt} className={classes.siteImage} />
+          <img
+            src={info.imageSmall}
+            alt={info.alt}
+            className={classes.siteImage}
+          />
         </Grid>
         <Grid
           container

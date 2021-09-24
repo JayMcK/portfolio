@@ -121,8 +121,8 @@ export default function About({ setValue }) {
                 item
                 align={matchesMD ? "center" : undefined}
                 style={{
-                  marginLeft: matchesSM ? "1em" : "5em",
-                  marginRight: matchesSM ? "1em" : "2em",
+                  marginLeft: matchesMD ? "1em" : "5em",
+                  marginRight: matchesMD ? "1em" : "2em",
                 }}
               >
                 <Typography variant="h2">My Background</Typography>
@@ -131,8 +131,8 @@ export default function About({ setValue }) {
                 item
                 align={matchesMD ? "center" : undefined}
                 style={{
-                  marginLeft: matchesSM ? "1em" : "5em",
-                  marginRight: matchesSM ? "1em" : "2em",
+                  marginLeft: matchesMD ? "1em" : "5em",
+                  marginRight: matchesMD ? "1em" : "2em",
                 }}
               >
                 <Typography paragraph variant="body1">
@@ -207,8 +207,8 @@ export default function About({ setValue }) {
                 item
                 align={matchesMD ? "center" : "right"}
                 style={{
-                  marginLeft: matchesSM ? "1em" : 0,
-                  marginRight: matchesSM ? "1em" : "5em",
+                  marginLeft: matchesMD ? "1em" : 0,
+                  marginRight: matchesMD ? "1em" : "5em",
                 }}
               >
                 <Typography variant="h2">My Approach to Technology</Typography>
@@ -217,8 +217,8 @@ export default function About({ setValue }) {
                 item
                 align={matchesMD ? "center" : "right"}
                 style={{
-                  marginLeft: matchesSM ? "1em" : 0,
-                  marginRight: matchesSM ? "1em" : "5em",
+                  marginLeft: matchesMD ? "1em" : 0,
+                  marginRight: matchesMD ? "1em" : "5em",
                 }}
               >
                 <Typography paragraph variant="body1">
