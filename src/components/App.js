@@ -7,6 +7,7 @@ import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 import Home from "./Home";
 import About from "./About";
+import Contact from "./Contact";
 
 import "../App.css";
 
@@ -32,7 +33,12 @@ function App() {
               <About {...props} value={value} setValue={setValue} />
             )}
           />
-          <Route path="/contact" component={() => <h1>contact</h1>} />
+          <Route
+            path="/contact"
+            render={(props) => (
+              <Contact {...props} value={value} setValue={setValue} />
+            )}
+          />
           <Redirect from="/home" to="/" />
         </Switch>
         <Footer value={value} setValue={setValue} />

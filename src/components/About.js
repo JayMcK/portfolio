@@ -168,12 +168,7 @@ export default function About({ setValue }) {
             <Grid item align="center">
               <Typography variant="h2">Current Tech Stack</Typography>
             </Grid>
-            <Grid
-              container
-              direction="row"
-              style={{ marginTop: "2em" }}
-              justifyContent="center"
-            >
+            <Grid container direction="row" justifyContent="center">
               {techStackIcons.map((icon) => (
                 <Grid
                   item

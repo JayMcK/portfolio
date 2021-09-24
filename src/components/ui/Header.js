@@ -117,6 +117,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     zIndex: theme.zIndex.modal + 1,
+    boxShadow: "none",
   },
   appbarMargin: {
     ...theme.mixins.toolbar,

@@ -93,5 +93,25 @@ export default createTheme({
         paddingBottom: 0,
       },
     },
+    MuiInputLabel: {
+      root: {
+        color: jayPurple,
+        fontSize: "1rem",
+      },
+    },
+    MuiInput: {
+      root: {
+        color: jayPurple,
+        fontWeight: 300,
+      },
+      underline: {
+        "&:before": {
+          borderBottom: `2px solid ${jayPurple}`,
+        },
+        "&:hover:not($disabled):not($focused):not($error):before": {
+          borderBottom: `2px solid ${jayOrange}`,
+        },
+      },
+    },
   },
 });
