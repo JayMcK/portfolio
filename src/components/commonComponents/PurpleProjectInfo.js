@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import IconButton from "@material-ui/core/IconButton";
 import Divider from "@material-ui/core/Divider";
 
 import nextIcon from "../../assets/nextIcon.svg";
@@ -14,12 +13,20 @@ import cssIcon from "../../assets/cssIcon.svg";
 import materialIcon from "../../assets/materialIcon.svg";
 import reactIcon from "../../assets/reactIcon.svg";
 import reduxIcon from "../../assets/reduxIcon.svg";
+import download from "../../assets/download.svg";
 
 const useStyles = makeStyles((theme) => ({
   icons: {
     height: "2em",
     marginLeft: "1em",
     marginRight: "1em",
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "0.5em",
+    },
+  },
+  downloadIcon: {
+    marginLeft: "1em",
+    width: "1.5em",
   },
   linkButton: {
     ...theme.typography.learnButton,
@@ -34,8 +41,14 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "1em",
     marginRight: "1em",
     textTransform: "uppercase",
+    width: 150,
+    height: 40,
+    fontSize: "0.75rem",
     [theme.breakpoints.down("sm")]: {
-      marginBottom: "1em",
+      marginBottom: "0.5em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "0.5em",
     },
   },
   dialogDivider: {
@@ -43,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "auto",
     backgroundColor: theme.palette.common.orange,
     width: "20em",
+    [theme.breakpoints.down("xs")]: {
+      width: "10em",
+    },
   },
   dialogDividerWidth: {
     marginLeft: 0,
@@ -67,7 +83,6 @@ export default function ProjectDialog({ info, setDialogOpen }) {
     { name: "javascript", src: javascriptIcon, alt: "javascript icon" },
     { name: "html", src: htmlIcon, alt: "html5 icon" },
     { name: "css", src: cssIcon, alt: "css3 icon" },
-    { name: "redux", src: reduxIcon, alt: "redux icon" },
   ];
 
   return (
@@ -118,12 +133,17 @@ export default function ProjectDialog({ info, setDialogOpen }) {
               className={classes.linkButton}
             >
               Design file
+              <img
+                src={download}
+                alt="download icon"
+                className={classes.downloadIcon}
+              />
             </Button>
           </Grid>
           <Grid
             container
             direction="row"
-            style={{ marginTop: "2em", marginBottom: "2em" }}
+            style={{ marginTop: "2em", marginBottom: "0.5em" }}
             justifyContent="center"
           >
             {techStackIcons.map((icon) => (
@@ -132,18 +152,18 @@ export default function ProjectDialog({ info, setDialogOpen }) {
               </Grid>
             ))}
           </Grid>
-          <Grid container direction="column" style={{ marginBottom: "2em" }}>
-            <Grid item style={{ marginLeft: "1em", marginRight: "1em" }}>
-              <Grid item sm align="center" style={{ marginRight: "0.5em" }}>
+          <Grid container direction="column" alignItems="center" style={{ marginBottom: "1em" }}>
+            <Grid item style={{ marginLeft: "2em", marginRight: "2em", maxWidth: "30em"  }}>
+              <Grid item sm align="center">
                 <Typography variant="h3" color="secondary">
-                  Purpose
+                  Project Details
                 </Typography>
                 <Typography
                   style={{ marginTop: "0.5em" }}
                   variant="body1"
                   className={classes.text}
                 >
-                  {info.purpose}
+                  {info.details}
                 </Typography>
               </Grid>
               <Grid item align="center">
@@ -157,48 +177,6 @@ export default function ProjectDialog({ info, setDialogOpen }) {
                     marginTop: "2em",
                   }}
                 />
-              </Grid>
-              <Grid
-                item
-                sm
-                align="center"
-                style={{
-                  marginRight: "0.5em",
-                  marginLeft: "0.5em",
-                }}
-              >
-                <Typography variant="h3" color="secondary">
-                  Process
-                </Typography>
-                <Typography
-                  style={{ marginTop: "0.5em" }}
-                  className={classes.text}
-                >
-                  {info.process}
-                </Typography>
-              </Grid>
-              <Grid item align="center">
-                <Divider
-                  orientation="horizontal"
-                  variant="inset"
-                  className={classes.dialogDivider}
-                  classes={{ inset: classes.dialogDividerWidth }}
-                  style={{
-                    marginBottom: "2em",
-                    marginTop: "2em",
-                  }}
-                />
-              </Grid>
-              <Grid item sm align="center" style={{ marginLeft: "0.5em" }}>
-                <Typography variant="h3" color="secondary">
-                  Later Features
-                </Typography>
-                <Typography
-                  style={{ marginTop: "0.5em" }}
-                  className={classes.text}
-                >
-                  {info.laterFeatures}
-                </Typography>
               </Grid>
             </Grid>
           </Grid>

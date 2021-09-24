@@ -39,15 +39,30 @@ const useStyles = makeStyles((theme) => ({
     height: "1.5em",
     width: "1.5em",
   },
-  heroIconButton: {
-    "&:hover": {
-      backgroundColor: "transparent",
-    },
-  },
   projectImage: {
     height: "40em",
     [theme.breakpoints.down("xs")]: {
       height: "30em",
+    },
+  },
+  projectsButton: {
+    ...theme.typography.learnButton,
+    borderRadius: 0,
+    backgroundColor: "transparent",
+    border: `2px solid ${theme.palette.common.purple}`,
+    "&:hover": {
+      backgroundColor: theme.palette.common.purple,
+      color: theme.palette.common.orange,
+      border: `2px solid ${"#fff"}`,
+    },
+    fontWeight: 800,
+  },
+  projectsText: {
+    fontSize: "1rem",
+    fontWeight: 600,
+    color: theme.palette.common.purple,
+    "&:hover": {
+      color: theme.palette.common.orange,
     },
   },
   learnButton: {
@@ -119,12 +134,8 @@ export default function Home({ value, setValue }) {
       alt: "flow living website link",
       designLink:
         "https://www.keepandshare.com/doc23/114271/flow-living-compressed-pdf-4-5-meg?da=y",
-      purpose:
-        "The goal of the site is to convert more visitors into potential clients’ increasing this businesses client base.",
-      process:
-        "The site provides information about the different services my client provides, to provide further information about who they are and why they should be hired, and to smoothly move the visitor through the site toward the call to action - sign up for a free session. This action allows my client to convert more visitors into potential clients; increasing their client base.",
-      laterFeatures:
-        "May include a Blog alongside a Login In area for current clients.",
+      details:
+        "Flow Living is a Single Page Web Application created for a Sole Trader who specialises in providing Holistic Spiritual Healing services.",
     },
     {
       title: "Fox Tree Kids",
@@ -134,11 +145,8 @@ export default function Home({ value, setValue }) {
       imageLarge: foxTreeKidsLarge,
       alt: "fox tree kids website link",
       designLink: "https://pdfhost.io/v/5Y~Jb.Q5d_Flow_Livingcompressed",
-      purpose:
-        "The goal of the site is to increase the number of applicants to the nursery school.",
-      process:
-        "The site provides information about the type of early years education provided by this school, in order to persuade parents to register to either visit the school or add their child to the waiting list.",
-      laterFeatures: "May include a Login In area for current parents.",
+      details:
+        "Fox Tree Kids is a Single Page Web Application for a Montessori School, allowing the school to engage with prospective and current parents.",
     },
   ];
 
@@ -172,31 +180,18 @@ export default function Home({ value, setValue }) {
               </Typography>
             </Grid>
             <Grid container direction="column" alignItems="center">
-              <Grid item style={{ marginTop: "10em" }}>
-                <Typography
-                  variant="h4"
-                  style={{
-                    color: theme.palette.common.purple,
-                    fontSize: "1.25rem",
-                  }}
-                >
-                  view recent projects
-                </Typography>
-              </Grid>
-              <Grid item>
-                <IconButton
+              <Grid item style={{ marginTop: "5em" }}>
+                <Button
                   component={Link}
                   to="/projects"
                   onClick={() => setValue(false)}
-                  className={classes.heroIconButton}
+                  className={classes.projectsButton}
                   disableRipple
                 >
-                  <img
-                    src={downArrow}
-                    alt="down arrow"
-                    className={classes.downArrow}
-                  />
-                </IconButton>
+                  <Typography variant="h4" className={classes.projectsText}>
+                    view recent projects
+                  </Typography>
+                </Button>
               </Grid>
             </Grid>
           </Grid>

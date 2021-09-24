@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   linkButton: {
     ...theme.typography.learnButton,
+    color: theme.palette.common.purple,
     borderRadius: 0,
     backgroundColor: "transparent",
     border: `2px solid ${theme.palette.common.orange}`,
@@ -35,14 +36,24 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "1em",
     marginRight: "1em",
     textTransform: "uppercase",
+    width: 150,
+    height: 40,
+    fontSize: "0.75rem",
     [theme.breakpoints.down("sm")]: {
-      marginBottom: "1em",
+      marginBottom: "0.5em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: "0.5em",
     },
   },
   dialogDivider: {
     marginTop: "auto",
     marginBottom: "auto",
     backgroundColor: theme.palette.common.orange,
+    width: "20em",
+    [theme.breakpoints.down("xs")]: {
+      width: "10em",
+    },
   },
   dialogDividerWidth: {
     marginLeft: 0,
@@ -58,8 +69,8 @@ const useStyles = makeStyles((theme) => ({
     },
     fontWeight: 800,
     textTransform: "uppercase",
-    width: 160,
-    height: 60,
+    width: 150,
+    height: 40,
     marginBottom: "2em",
   },
   siteImage: {
@@ -171,21 +182,16 @@ export default function ProjectDialog({ info, setDialogOpen }) {
           container
           direction={matchesSM ? "column" : "row"}
           style={{ marginTop: "2em", marginBottom: "2em" }}
+          alignItems="center"
         >
-          <Grid item sm align="center" style={{ marginRight: "0.5em" }}>
-            <Typography variant="h3">Purpose</Typography>
-            <Typography style={{ marginTop: "0.5em" }} variant="body1">
-              {info.purpose}
-            </Typography>
-          </Grid>
-          <Grid item>
+          <Grid item align="center">
             <Divider
               orientation={matchesSM ? "horizontal" : "vertical"}
               variant="inset"
               className={classes.dialogDivider}
               classes={{ inset: classes.dialogDividerWidth }}
               style={{
-                marginBottom: matchesSM ? "1em" : 0,
+                marginBottom: matchesSM ? "2em" : 0,
                 marginTop: matchesSM ? "1em" : 0,
               }}
             />
@@ -194,32 +200,11 @@ export default function ProjectDialog({ info, setDialogOpen }) {
             item
             sm
             align="center"
-            style={{
-              marginRight: "0.5em",
-              marginLeft: "0.5em",
-            }}
+            style={{ marginRight: "0.5em", maxWidth: "30em" }}
           >
-            <Typography variant="h3">Process</Typography>
-            <Typography style={{ marginTop: "0.5em" }}>
-              {info.process}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Divider
-              orientation={matchesSM ? "horizontal" : "vertical"}
-              variant="inset"
-              className={classes.dialogDivider}
-              classes={{ inset: classes.dialogDividerWidth }}
-              style={{
-                marginBottom: matchesSM ? "1em" : 0,
-                marginTop: matchesSM ? "1em" : 0,
-              }}
-            />
-          </Grid>
-          <Grid item sm align="center" style={{ marginLeft: "0.5em" }}>
-            <Typography variant="h3">Later Features</Typography>
-            <Typography style={{ marginTop: "0.5em" }}>
-              {info.laterFeatures}
+            <Typography variant="h3">Project Details</Typography>
+            <Typography style={{ marginTop: "0.5em" }} variant="body1">
+              {info.details}
             </Typography>
           </Grid>
         </Grid>

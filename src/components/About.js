@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -58,8 +57,6 @@ export default function About({ setValue }) {
   const classes = useStyles();
   const theme = useTheme();
 
-  const matchesXS = useMediaQuery(theme.breakpoints.down("xs"));
-  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   const matchesMD = useMediaQuery(theme.breakpoints.down("md"));
 
   const techStackIcons = [
