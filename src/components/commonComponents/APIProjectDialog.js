@@ -10,7 +10,7 @@ import Divider from "@material-ui/core/Divider";
 
 import CloseIcon from "@material-ui/icons/Close";
 
-import nextIcon from "../../assets/nextIcon.svg";
+import apiIcon from "../../assets/apiIcon.svg";
 import javascriptIcon from "../../assets/javascriptIcon.svg";
 import htmlIcon from "../../assets/htmlIcon.svg";
 import cssIcon from "../../assets/cssIcon.svg";
@@ -97,7 +97,7 @@ export default function ProjectDialog({ info, setDialogOpen }) {
 
   const techStackIcons = [
     { name: "react", src: reactIcon, alt: "react js icon" },
-    { name: "next", src: nextIcon, alt: "next js icon" },
+    { name: "api", src: apiIcon, alt: "api icon" },
     { name: "material", src: materialIcon, alt: "material ui icon" },
     { name: "javascript", src: javascriptIcon, alt: "javascript icon" },
     { name: "html", src: htmlIcon, alt: "html5 icon" },

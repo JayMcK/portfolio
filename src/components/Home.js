@@ -7,8 +7,10 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Dialog from "@material-ui/core/Dialog";
+import Divider from "@material-ui/core/Divider";
 
 import ProjectDialog from "./commonComponents/ProjectDialog";
+import APIProjectDialog from "./commonComponents/APIProjectDialog";
 import ContactCard from "./ui/ContactCard";
 
 import downArrow from "../assets/downArrow.svg";
@@ -18,6 +20,10 @@ import flowLiving from "../assets/flowLiving.jpg";
 import flowLivingLarge from "../assets/flowLivingLarge.png";
 import foxTreeKids from "../assets/foxTreeKids.jpg";
 import foxTreeKidsLarge from "../assets/foxTreeKidsLarge.png";
+import indigoSmall from "../assets/indigoSmall.jpg";
+import indigoLarge from "../assets/indigoLarge.jpg";
+import cribCocktailsSmall from "../assets/cribCocktailsSmall.jpg";
+import cribCocktailsLarge from "../assets/cribCocktailsLarge.jpg";
 import graduate from "../assets/graduate.svg";
 import tech from "../assets/tech.svg";
 import graph from "../assets/graph.svg";
@@ -44,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("xs")]: {
       height: "30em",
     },
+    border: `2px solid ${theme.palette.common.orange}`,
   },
   projectsButton: {
     ...theme.typography.learnButton,
@@ -93,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
     width: "1em",
   },
   sectionTitle: {
-    textTransform: "uppercase",
+    textTransform: "none",
   },
   projectLink: {
     textDecoration: "none",
@@ -113,6 +120,21 @@ const useStyles = makeStyles((theme) => ({
   infoIcon: {
     height: "15em",
   },
+  divider: {
+    width: "40em",
+    [theme.breakpoints.down("md")]: {
+      width: "30em",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "25em",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "17em",
+    },
+    backgroundColor: theme.palette.common.purple,
+    marginTop: "2.5em",
+    marginBottom: "2.5em",
+  },
 }));
 
 export default function Home({ value, setValue }) {
@@ -123,6 +145,7 @@ export default function Home({ value, setValue }) {
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [project, setProject] = useState("");
+  const [projectType, setProjectType] = useState("");
 
   const webProjects = [
     {
@@ -133,9 +156,9 @@ export default function Home({ value, setValue }) {
       imageLarge: flowLivingLarge,
       alt: "flow living website link",
       designLink:
-        "https://www.keepandshare.com/doc23/114271/flow-living-compressed-pdf-4-5-meg?da=y",
+        "https://www.mediafire.com/file/7kanthotibmr5qr/flow-living-design.pdf/file",
       details:
-        "Flow Living is a Single Page Web Application created for a Sole Trader who specialises in providing Holistic Spiritual Healing services.",
+        "Flow Living is a Single Page Web Application, designed using Figma. Initially developed using create-react-app then migrated to Next.js for SEO Optimization and Server Side Rendering. Material UI was used extensively throughout this project.",
     },
     {
       title: "Fox Tree Kids",
@@ -144,9 +167,37 @@ export default function Home({ value, setValue }) {
       imageSmall: foxTreeKids,
       imageLarge: foxTreeKidsLarge,
       alt: "fox tree kids website link",
-      designLink: "https://pdfhost.io/v/5Y~Jb.Q5d_Flow_Livingcompressed",
+      designLink:
+        "https://www.mediafire.com/file/gmgub7ivav6hl62/fox-tree-kids-design.pdf/file",
       details:
-        "Fox Tree Kids is a Single Page Web Application for a Montessori School, allowing the school to engage with prospective and current parents.",
+        "Fox Tree Kids is a Single Page Web Application, designed using Figma. Initially developed using create-react-app then migrated to Next.js for SEO Optimization and Server Side Rendering. Material UI was used extensively throughout this project.",
+    },
+  ];
+
+  const APIProjects = [
+    {
+      title: "Indigo",
+      liveLink: "https://indigo-kappa.vercel.app/",
+      ghLink: "https://github.com/JayMcK/indigo",
+      imageSmall: indigoSmall,
+      imageLarge: indigoLarge,
+      alt: "indigo website link",
+      designLink:
+        "https://www.mediafire.com/file/sv7gpo1qheoxa0t/indigo-design.pdf/file",
+      details:
+        "Indigo is a Single Page Web Application, designed using Figma. Indigo is a movie information website, developed using OMDb's API; allowing the user to browse movie titles. Material UI was used extensively throughout this project.",
+    },
+    {
+      title: "Crib Cocktails",
+      liveLink: "https://crib-cocktails.vercel.app/",
+      ghLink: "https://github.com/JayMcK/crib-cocktails",
+      imageSmall: cribCocktailsSmall,
+      imageLarge: cribCocktailsLarge,
+      alt: "crib cocktails website link",
+      designLink:
+        "https://www.mediafire.com/file/xi3zlkkjz2j4pvu/crib-cocktails-design.pdf/file",
+      details:
+        "Crib Cocktails is a Single Page Web Application, designed using Figma. Indigo is a cocktail recipe information website, developed using thecocktaildb's API; allowing the user to search for cocktail recipe's by first letter, name or random pick. Material UI was used extensively throughout this project.",
     },
   ];
 
@@ -197,19 +248,19 @@ export default function Home({ value, setValue }) {
           </Grid>
         </Grid>
         <Grid item>
-          {/* ------ Projects Section ----- */}
+          {/* ------ Web Application Projects Section ----- */}
           <Grid
             container
             direction="column"
             justifyContent="center"
             alignItems="center"
           >
-            <Grid item style={{ marginTop: "5em", marginBottom: "1em" }}>
+            <Grid item style={{ marginTop: "5em" }}>
               <Typography variant="h2" className={classes.sectionTitle}>
-                Web Apps
+                Web Applications
               </Typography>
             </Grid>
-            <Grid item style={{ marginBottom: "3em" }}>
+            <Grid item>
               <Button
                 variant="contained"
                 color="primary"
@@ -242,18 +293,92 @@ export default function Home({ value, setValue }) {
                   onClick={() => {
                     setDialogOpen(true);
                     setProject(project);
+                    setProjectType("web");
                   }}
                   className={classes.projectLink}
                   style={{
                     display: "grid",
                   }}
                 >
-                  <Grid item>
+                  <Grid item style={{ marginTop: "2em" }}>
                     <Typography variant="h5" className={classes.projectTitle}>
                       {project.title}
                     </Typography>
                   </Grid>
-                  <Grid item style={{ marginBottom: matchesSM ? "2em" : 0 }}>
+                  <Grid item>
+                    <img
+                      src={project.imageSmall}
+                      alt={project.alt}
+                      className={classes.projectImage}
+                    />
+                  </Grid>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item align="center">
+          <Divider className={classes.divider} />
+        </Grid>
+        <Grid item style={{ marginBottom: "5em" }}>
+          {/* ------ Fun with APIs Projects Section ----- */}
+          <Grid
+            container
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Grid item>
+              <Typography variant="h2" className={classes.sectionTitle}>
+                Fun with APIs
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.learnButton}
+                component={Link}
+                to="/projects"
+                onClick={() => {
+                  setValue(3);
+                }}
+              >
+                Learn More
+                <img
+                  src={rightArrow}
+                  alt="right arrow"
+                  className={classes.rightArrow}
+                />
+              </Button>
+            </Grid>
+            <Grid container direction={matchesSM ? "column" : "row"}>
+              {APIProjects.map((project) => (
+                <Grid
+                  key={project.image}
+                  item
+                  sm
+                  container
+                  direction="column"
+                  alignItems="center"
+                  component={Button}
+                  disableRipple
+                  onClick={() => {
+                    setDialogOpen(true);
+                    setProject(project);
+                    setProjectType("api");
+                  }}
+                  className={classes.projectLink}
+                  style={{
+                    display: "grid",
+                  }}
+                >
+                  <Grid item style={{ marginTop: "2em" }}>
+                    <Typography variant="h5" className={classes.projectTitle}>
+                      {project.title}
+                    </Typography>
+                  </Grid>
+                  <Grid item>
                     <img
                       src={project.imageSmall}
                       alt={project.alt}
@@ -290,25 +415,41 @@ export default function Home({ value, setValue }) {
                 </Typography>
               </Grid>
               <Grid
-                item
-                style={{
-                  marginLeft: matchesSM ? "1em" : "5em",
-                  marginRight: matchesSM ? "1em" : 0,
-                }}
-                align={matchesSM ? "center" : undefined}
+                container
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
               >
-                <Typography variant="body1" style={{ color: "#fff" }} paragraph>
-                  React.js, Next.js, Javascript, Material UI, CSS and HTML are
-                  my current technologies of choice.
-                </Typography>
-                <Typography paragraph variant="body1" style={{ color: "#fff" }}>
-                  I am familiar with Redux, Node.js, Express.js and
-                  <span className={classes.specialText}>
-                    {" "}
-                    can quickly learn any tech that is right for the task at
-                    hand.
-                  </span>
-                </Typography>
+                <Grid
+                  item
+                  style={{
+                    marginLeft: matchesSM ? "1em" : "5em",
+                    marginRight: matchesSM ? "1em" : 0,
+                    maxWidth: matchesSM ? "30em" : undefined,
+                  }}
+                  align={matchesSM ? "center" : undefined}
+                >
+                  <Typography
+                    variant="body1"
+                    style={{ color: "#fff" }}
+                    paragraph
+                  >
+                    React.js, Next.js, Javascript, Material UI, CSS and HTML are
+                    my current technologies of choice.
+                  </Typography>
+                  <Typography
+                    paragraph
+                    variant="body1"
+                    style={{ color: "#fff" }}
+                  >
+                    I am familiar with Redux, Node.js, Express.js and
+                    <span className={classes.specialText}>
+                      {" "}
+                      can quickly learn any tech that is right for the task at
+                      hand.
+                    </span>
+                  </Typography>
+                </Grid>
               </Grid>
               <Grid
                 item
@@ -338,7 +479,7 @@ export default function Home({ value, setValue }) {
               item
               md
               align={matchesSM ? "center" : undefined}
-              style={{ marginTop: matchesSM ? "1em" : "5em" }}
+              style={{ marginTop: matchesSM ? "1em" : 0 }}
             >
               <img
                 src={tech}
@@ -377,24 +518,41 @@ export default function Home({ value, setValue }) {
                 </Typography>
               </Grid>
               <Grid
-                item
-                align={matchesSM ? "center" : "right"}
-                style={{
-                  marginLeft: matchesSM ? "1em" : "5em",
-                  marginRight: matchesSM ? "1em" : 0,
-                }}
+                container
+                direction="column"
+                justifyContent={matchesSM ? "center" : undefined}
+                alignItems={matchesSM ? "center" : undefined}
               >
-                <Typography variant="body1" style={{ color: "#fff" }} paragraph>
-                  I believe that technology should make business practices
-                  easier, not harder.
-                </Typography>
-                <Typography paragraph variant="body1" style={{ color: "#fff" }}>
-                  Having a long-term vision when solving current problems leads
-                  <span className={classes.specialText}>
-                    {" "}
-                    to better technogical solutions.
-                  </span>
-                </Typography>
+                <Grid
+                  item
+                  align={matchesSM ? "center" : "right"}
+                  style={{
+                    marginLeft: matchesSM ? "1em" : "5em",
+                    marginRight: matchesSM ? "1em" : 0,
+                    maxWidth: matchesSM ? "30em" : undefined,
+                  }}
+                >
+                  <Typography
+                    variant="body1"
+                    style={{ color: "#fff" }}
+                    paragraph
+                  >
+                    I believe that technology should make business practices
+                    easier, not harder.
+                  </Typography>
+                  <Typography
+                    paragraph
+                    variant="body1"
+                    style={{ color: "#fff" }}
+                  >
+                    Having a long-term vision when solving current problems
+                    leads
+                    <span className={classes.specialText}>
+                      {" "}
+                      to better technogical solutions.
+                    </span>
+                  </Typography>
+                </Grid>
               </Grid>
               <Grid item align={matchesSM ? "center" : "right"}>
                 <Button
@@ -462,23 +620,39 @@ export default function Home({ value, setValue }) {
                 </Typography>
               </Grid>
               <Grid
-                item
-                style={{
-                  marginLeft: matchesSM ? "1em" : "5em",
-                  marginRight: matchesSM ? "1em" : 0,
-                }}
-                align={matchesSM ? "center" : undefined}
+                container
+                direction="column"
+                justifyContent={matchesSM ? "center" : undefined}
+                alignItems={matchesSM ? "center" : undefined}
               >
-                <Typography variant="body1" style={{ color: "#fff" }} paragraph>
-                  First Class (Hons) Business with Economics Degree.
-                </Typography>
-                <Typography paragraph variant="body1" style={{ color: "#fff" }}>
-                  My understanding of businesses allows me to develop
-                  <span className={classes.specialText}>
-                    {" "}
-                    better technologies for businesses.
-                  </span>
-                </Typography>
+                <Grid
+                  item
+                  style={{
+                    marginLeft: matchesSM ? "1em" : "5em",
+                    marginRight: matchesSM ? "1em" : 0,
+                    maxWidth: matchesSM ? "30em" : undefined,
+                  }}
+                  align={matchesSM ? "center" : undefined}
+                >
+                  <Typography
+                    variant="body1"
+                    style={{ color: "#fff" }}
+                    paragraph
+                  >
+                    First Class (Hons) Business with Economics Degree.
+                  </Typography>
+                  <Typography
+                    paragraph
+                    variant="body1"
+                    style={{ color: "#fff" }}
+                  >
+                    My understanding of businesses allows me to develop
+                    <span className={classes.specialText}>
+                      {" "}
+                      better technologies for businesses.
+                    </span>
+                  </Typography>
+                </Grid>
               </Grid>
               <Grid
                 item
@@ -528,7 +702,11 @@ export default function Home({ value, setValue }) {
           onClose={() => setDialogOpen(false)}
           fullScreen
         >
-          <ProjectDialog info={project} setDialogOpen={setDialogOpen} />
+          {projectType === "web" ? (
+            <ProjectDialog info={project} setDialogOpen={setDialogOpen} />
+          ) : projectType === "api" ? (
+            <APIProjectDialog info={project} setDialogOpen={setDialogOpen} />
+          ) : null}
         </Dialog>
       </Grid>
     </Grid>

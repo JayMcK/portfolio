@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -145,13 +146,31 @@ export default function Contact({ setValue }) {
   };
 
   const handleSubmit = () => {
-    setName("");
-    setEmail("");
-    setPhone("");
-    setMessage("");
-    setPhoneHelper("");
-    setDialogOpen(false);
-    setSnackbarOpen(true);
+    let data = {
+      name: name,
+      email: email,
+      phone: phone,
+      message: message,
+    };
+
+    axios
+      .post(
+        "https://jay-mckenzie-portfolio-backend.herokuapp.com/api/form",
+        data
+      )
+      .then((res) => {
+        setName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
+        setPhoneHelper("");
+        setDialogOpen(false);
+        setSnackbarOpen(true);
+        console.log("message left successfully");
+      })
+      .catch((err) => {
+        console.log("message did not leave successfully");
+      });
   };
 
   return (

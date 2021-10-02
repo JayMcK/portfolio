@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
   downloadButton: {
     ...theme.typography.learnButton,
     borderRadius: 0,
+    width: 150,
+    height: 40,
     backgroundColor: "transparent",
     border: `2px solid ${theme.palette.common.orange}`,
     "&:hover": {
@@ -33,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   downloadIcon: {
     marginLeft: "1em",
+    width: "1.5em",
   },
   sectionImage: {
     maxWidth: "30em",
@@ -50,6 +53,12 @@ const useStyles = makeStyles((theme) => ({
     height: "6em",
     marginLeft: "1em",
     marginRight: "1em",
+  },
+  aboutMeText: {
+    fontWeight: 500,
+    fontSize: "1.5rem",
+    marginBottom: "1em",
+    [theme.breakpoints.down("sm")]: { marginRight: "1em", marginLeft: "1em" },
   },
 }));
 
@@ -85,8 +94,8 @@ export default function About({ setValue }) {
           <Grid item>
             <Typography variant="h1">About Me</Typography>
           </Grid>
-          <Grid item>
-            <Typography variant="subtitle1" paragraph>
+          <Grid item align="center">
+            <Typography variant="h5" className={classes.aboutMeText} paragraph>
               I am a Front End Web Developer from London, UK.
             </Typography>
           </Grid>
@@ -95,8 +104,12 @@ export default function About({ setValue }) {
               variant="contained"
               color="primary"
               className={classes.downloadButton}
+              component={"a"}
+              href="https://www.mediafire.com/file/7tyl0oz0qo9l8m1/JayMcKenzieCV_compressed.pdf/file"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              download my cv
+              cv
               <img
                 src={download}
                 alt="download icon"
@@ -113,15 +126,14 @@ export default function About({ setValue }) {
             alignItems="center"
             style={{ paddingBottom: "5em" }}
           >
-            <Grid item md container direction="column">
-              <Grid
-                item
-                align={matchesMD ? "center" : undefined}
-                style={{
-                  marginLeft: matchesMD ? "1em" : "5em",
-                  marginRight: matchesMD ? "1em" : "2em",
-                }}
-              >
+            <Grid
+              item
+              md
+              container
+              direction="column"
+              alignItems={matchesMD ? "center" : undefined}
+            >
+              <Grid item style={{ marginLeft: matchesMD ? 0 : "5em" }}>
                 <Typography variant="h2">My Background</Typography>
               </Grid>
               <Grid
@@ -130,6 +142,7 @@ export default function About({ setValue }) {
                 style={{
                   marginLeft: matchesMD ? "1em" : "5em",
                   marginRight: matchesMD ? "1em" : "2em",
+                  maxWidth: "50em",
                 }}
               >
                 <Typography paragraph variant="body1">
@@ -199,7 +212,13 @@ export default function About({ setValue }) {
                 />
               </Grid>
             </Hidden>
-            <Grid item md container direction="column">
+            <Grid
+              item
+              md
+              container
+              direction="column"
+              alignItems={matchesMD ? "center" : "flex-end"}
+            >
               <Grid
                 item
                 align={matchesMD ? "center" : "right"}
@@ -216,6 +235,7 @@ export default function About({ setValue }) {
                 style={{
                   marginLeft: matchesMD ? "1em" : 0,
                   marginRight: matchesMD ? "1em" : "5em",
+                  maxWidth: "50em",
                 }}
               >
                 <Typography paragraph variant="body1">
