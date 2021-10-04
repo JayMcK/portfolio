@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import axios from "axios";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -10,6 +10,9 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 import CloseIcon from "@material-ui/icons/Close";
 
@@ -18,6 +21,10 @@ import telephone from "../assets/telephone.svg";
 import envelope from "../assets/envelope.svg";
 import location from "../assets/location.svg";
 import paperPlane from "../assets/paperPlane.svg";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   contactBackgroundContainer: {
@@ -51,6 +58,8 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.common.orange,
     },
     fontWeight: 500,
+    width: 200,
+    height: 50,
     fontSize: "1.25rem",
     marginLeft: "1em",
     marginRight: "1em",
@@ -97,6 +106,9 @@ export default function Contact({ setValue }) {
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+  const [messageSent, setMessageSent] = useState(false);
+  const [messageSending, setMessageSending] = useState(false);
 
   const textFields = [
     { name: "name", label: "Name", value: name, helper: nameHelper },
@@ -146,6 +158,7 @@ export default function Contact({ setValue }) {
   };
 
   const handleSubmit = () => {
+    setMessageSending(true);
     let data = {
       name: name,
       email: email,
@@ -166,12 +179,36 @@ export default function Contact({ setValue }) {
         setPhoneHelper("");
         setDialogOpen(false);
         setSnackbarOpen(true);
+        setMessageSent(true);
+        setMessageSending(false);
         console.log("message left successfully");
       })
       .catch((err) => {
         console.log("message did not leave successfully");
+        setMessageSent(false);
+        setMessageSending(false);
+        setSnackbarOpen(true);
       });
   };
+
+  const handleMessage = () => {
+    return messageSent
+      ? "Message Sent Successfully"
+      : "Message did not send. Please try again";
+  };
+
+  const submitButton = (
+    <Fragment>
+      Send message
+      <img src={paperPlane} alt="paper plane" className={classes.submitIcon} />
+    </Fragment>
+  );
+
+  const loading = (
+    <Grid item>
+      <CircularProgress color="primary" size={30} />
+    </Grid>
+  );
 
   return (
     <Grid item>
@@ -433,17 +470,11 @@ export default function Contact({ setValue }) {
                   }
                   className={classes.submitButton}
                   onClick={() => {
-                    setDialogOpen(true);
                     handleSubmit();
                   }}
                   style={{ marginBottom: 0 }}
                 >
-                  Send message
-                  <img
-                    src={paperPlane}
-                    alt="paper plane"
-                    className={classes.submitIcon}
-                  />
+                  {messageSending ? loading : submitButton}
                 </Button>
               </Grid>
               <Grid item align="center">
@@ -457,6 +488,29 @@ export default function Contact({ setValue }) {
             </Grid>
           </DialogContent>
         </Dialog>
+        {snackbarOpen && (
+          <div className={classes.root}>
+            <Snackbar
+              open={snackbarOpen}
+              autoHideDuration={6000}
+              onClose={() => setSnackbarOpen(false)}
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            >
+              {messageSent ? (
+                <Alert
+                  onClose={() => setSnackbarOpen(false)}
+                  severity="success"
+                >
+                  Message sent successfully!
+                </Alert>
+              ) : (
+                <Alert onClose={() => setSnackbarOpen(false)} severity="error">
+                  Message sending failed. Please try again!
+                </Alert>
+              )}
+            </Snackbar>
+          </div>
+        )}
       </Grid>
     </Grid>
   );
