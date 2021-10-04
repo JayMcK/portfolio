@@ -1,6 +1,6 @@
 # My Portfolio - Jay McKenzie
 
-Please visit the post-NextJS migration live site here: www.jaymckenzie.co.uk
+Please visit the post-NextJS migration live site here: https://www.jaymckenzie.co.uk
 
 ## Introduction
 
@@ -15,7 +15,6 @@ To see the project post-NextJS migration, please visit the repo here: https://gi
 - JavaScript
 - React
 - create-react-app
-- Next.js
 - Material UI
 - HTML
 - CSS
