@@ -118,58 +118,67 @@ export default function About({ setValue }) {
             </Button>
           </Grid>
         </Grid>
-        <Grid item>
-          {/* ----- My Background Section ----- */}
+        {/* ----- My Background Section ----- */}
+        <Grid
+          container
+          direction={matchesMD ? "column" : "row"}
+          alignItems="center"
+          style={{ paddingBottom: "5em" }}
+        >
           <Grid
+            item
+            md
             container
-            direction={matchesMD ? "column" : "row"}
-            alignItems="center"
-            style={{ paddingBottom: "5em" }}
+            direction="column"
+            alignItems={matchesMD ? "center" : undefined}
           >
+            <Grid item style={{ marginLeft: matchesMD ? 0 : "5em" }}>
+              <Typography variant="h2">My Background</Typography>
+            </Grid>
             <Grid
               item
-              md
-              container
-              direction="column"
-              alignItems={matchesMD ? "center" : undefined}
+              align={matchesMD ? "center" : undefined}
+              style={{
+                marginLeft: matchesMD ? "1em" : "5em",
+                marginRight: matchesMD ? "1em" : "2em",
+                maxWidth: "50em",
+              }}
             >
-              <Grid item style={{ marginLeft: matchesMD ? 0 : "5em" }}>
-                <Typography variant="h2">My Background</Typography>
-              </Grid>
-              <Grid
-                item
-                align={matchesMD ? "center" : undefined}
-                style={{
-                  marginLeft: matchesMD ? "1em" : "5em",
-                  marginRight: matchesMD ? "1em" : "2em",
-                  maxWidth: "50em",
-                }}
-              >
-                <Typography paragraph variant="body1">
-                  With a First Class (Hons) in Business with Economics, I have
-                  had a keen interest in business since I was a child and as we
-                  have become a technology-centered world, I grew an equally
-                  passionate interest in the use of technology in business
-                  operations.
-                </Typography>
-                <Typography paragraph variant="body1">
-                  As a self-taught developer with an intrinsic love of learning,
-                  I have strong problem solving skills and love a challenge.
-                </Typography>
-                <Typography paragraph variant="body1">
-                  When I am not coding or learning something new about
-                  development and technology, you’ll find me in the gym or at my
-                  basketball club.
-                </Typography>
-              </Grid>
+              <Typography paragraph variant="body1">
+                With a First Class (Hons) in Business with Economics, I have had
+                a keen interest in business since I was a child and have grown
+                an equally passionate interest in the use of technology in
+                business operations.
+              </Typography>
+              <Typography paragraph variant="body1">
+                As a self-taught developer, I have gained a solid grasp of
+                JavaScript alongside Front-End tools incl. React and Material
+                UI, whilst constantly developing my knowledge and tech stack.
+              </Typography>
+              <Typography paragraph variant="body1">
+                For example I used Node.js to build a simple back-end for this
+                portfolio in order to create an email service connected to my
+                Contact Me page. I used expressJS to build a server, alongside
+                cors, nodemailer and a few other npm packages to create the
+                emailing service. I then hosted my server online using Heroku.
+              </Typography>
+              <Typography paragraph variant="body1">
+                The more projects I create, the more I understand the need for a
+                strong grasp on Data Structures and Algorithms - in order to
+                develop technology that is scalable and is efficient - both in
+                Time and Space (Big O), alongside giving me the knowledge on how
+                to best structure and store data in order to match the desired
+                functionality of the program. This has lead to me giving a lot
+                of focus to this aspect of Computer Science and Programming.
+              </Typography>
             </Grid>
-            <Grid item md align="center">
-              <img
-                src={office}
-                alt="girl sitting at office desk"
-                className={classes.sectionImage}
-              />
-            </Grid>
+          </Grid>
+          <Grid item md align="center">
+            <img
+              src={office}
+              alt="girl sitting at office desk"
+              className={classes.sectionImage}
+            />
           </Grid>
         </Grid>
         <Grid item>
@@ -195,77 +204,82 @@ export default function About({ setValue }) {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item>
-          {/* ----- My Approach to Technology Section ----- */}
+        {/* ----- My Approach to Technology Section ----- */}
+        <Grid
+          container
+          direction={matchesMD ? "column" : "row"}
+          alignItems="center"
+          style={{ paddingBottom: "5em", paddingTop: "5em" }}
+        >
+          <Hidden smDown>
+            <Grid item md align="center" style={{ marginBottom: "1em" }}>
+              <img
+                src={lightbulb}
+                alt="girl sitting next to huge light bulb"
+                className={classes.sectionImage}
+              />
+            </Grid>
+          </Hidden>
           <Grid
+            item
+            md
             container
-            direction={matchesMD ? "column" : "row"}
-            alignItems="center"
-            style={{ paddingBottom: "5em", paddingTop: "5em" }}
+            direction="column"
+            alignItems={matchesMD ? "center" : "flex-end"}
           >
-            <Hidden smDown>
-              <Grid item md align="center" style={{ marginBottom: "1em" }}>
-                <img
-                  src={lightbulb}
-                  alt="girl sitting next to huge light bulb"
-                  className={classes.sectionImage}
-                />
-              </Grid>
-            </Hidden>
             <Grid
               item
-              md
-              container
-              direction="column"
-              alignItems={matchesMD ? "center" : "flex-end"}
+              align={matchesMD ? "center" : "right"}
+              style={{
+                marginLeft: matchesMD ? "1em" : 0,
+                marginRight: matchesMD ? "1em" : "5em",
+              }}
             >
-              <Grid
-                item
-                align={matchesMD ? "center" : "right"}
-                style={{
-                  marginLeft: matchesMD ? "1em" : 0,
-                  marginRight: matchesMD ? "1em" : "5em",
-                }}
-              >
-                <Typography variant="h2">My Approach to Technology</Typography>
-              </Grid>
-              <Grid
-                item
-                align={matchesMD ? "center" : "right"}
-                style={{
-                  marginLeft: matchesMD ? "1em" : 0,
-                  marginRight: matchesMD ? "1em" : "5em",
-                  maxWidth: "50em",
-                }}
-              >
-                <Typography paragraph variant="body1">
-                  With technology advancing constantly, and at an exponential
-                  rate, not only are the existing technologies developing, but
-                  new technologies are being created.
-                </Typography>
-                <Typography paragraph variant="body1">
-                  Therefore, instead of becoming dependent on and focused on any
-                  specific technology, I prefer to look at the current problem
-                  and then find the best technological solution to solve it, in
-                  a long-term, sustainable way.
-                </Typography>
-                <Typography paragraph variant="body1">
-                  This approach keeps me connected to the changes happening in
-                  the industry and keen to constantly grow my awareness and
-                  understanding of different technologies.
-                </Typography>
-              </Grid>
+              <Typography variant="h2">My Approach to Technology</Typography>
             </Grid>
-            <Hidden mdUp>
-              <Grid item md align="center">
-                <img
-                  src={lightbulb}
-                  alt="girl sitting next to huge light bulb"
-                  className={classes.sectionImage}
-                />
-              </Grid>
-            </Hidden>
+            <Grid
+              item
+              align={matchesMD ? "center" : "right"}
+              style={{
+                marginLeft: matchesMD ? "1em" : 0,
+                marginRight: matchesMD ? "1em" : "5em",
+                maxWidth: "50em",
+              }}
+            >
+              <Typography paragraph variant="body1">
+                With technology advancing constantly, and at an exponential
+                rate, not only are the existing technologies developing, but new
+                technologies are being created.
+              </Typography>
+              <Typography paragraph variant="body1">
+                Therefore, instead of becoming dependent on and focused on any
+                specific technology, I prefer to look at the current problem and
+                then find the best technological solution to solve it, in a
+                long-term, sustainable way.
+              </Typography>
+              <Typography paragraph variant="body1">
+                For example, after learning and using CSS, SASS, Styled
+                Components and Bootstrap in earlier projects, I researched
+                Material UI and how useful it can be when developing React Web
+                Applications, and so I extensively learnt how to utilise this
+                Front-End React UI Library.
+              </Typography>
+              <Typography paragraph variant="body1">
+                Jest is on my list of tech to learn next, as I understand the
+                need for TDD and believe using Jest will give me the tools to
+                implement this process into my development.
+              </Typography>
+            </Grid>
           </Grid>
+          <Hidden mdUp>
+            <Grid item md align="center">
+              <img
+                src={lightbulb}
+                alt="girl sitting next to huge light bulb"
+                className={classes.sectionImage}
+              />
+            </Grid>
+          </Hidden>
         </Grid>
         <ContactCard setValue={setValue} />
       </Grid>

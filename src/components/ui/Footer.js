@@ -9,6 +9,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import logo from "../../assets/logo.svg";
 import linkedin from "../../assets/linkedin.svg";
+import github from "../../assets/github.svg";
 
 const useStyles = makeStyles((theme) => ({
   footerContainer: {
@@ -47,6 +48,8 @@ const useStyles = makeStyles((theme) => ({
     height: "2em",
     width: "2em",
     marginTop: "0.5em",
+    marginRight: "0.5em",
+    marginLeft: "0.5em",
   },
   copyright: {
     color: theme.palette.common.purple,
@@ -73,7 +76,12 @@ export default function Footer({ value, setValue }) {
   ];
 
   const socialMediaIcons = [
-    { href: "https://www.linkedin.com/", src: linkedin, alt: "linkedin link" },
+    {
+      href: "https://www.linkedin.com/in/jay-mckenzie-a4982253/",
+      src: linkedin,
+      alt: "linkedin link",
+    },
+    { href: "https://github.com/JayMcK", src: github, alt: "github link" },
   ];
 
   return (

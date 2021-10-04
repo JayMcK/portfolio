@@ -190,6 +190,9 @@ export default function Header({ value, setValue }) {
       case "/projects":
         setValue(false);
         break;
+      case "/not-found":
+        setValue(false);
+        break;
       default:
         break;
     }

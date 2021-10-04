@@ -9,6 +9,7 @@ import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
 import Projects from "./Projects";
+import NotFound from "./ui/NotFound";
 
 import "../App.css";
 
@@ -46,6 +47,13 @@ function App() {
             )}
           />
           <Redirect from="/home" to="/" />
+          <Route
+            path="/not-found"
+            render={(props) => (
+              <NotFound {...props} value={value} setValue={setValue} />
+            )}
+          />
+          <Redirect to="/not-found" />
         </Switch>
         <Footer value={value} setValue={setValue} />
       </BrowserRouter>
